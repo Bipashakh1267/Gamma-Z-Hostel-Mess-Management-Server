@@ -1,0 +1,16 @@
+Name RollNumber Hostel Room Mess MessPref
+Jennee 102122001 GarnetA 0 1 -
+Jacquelin 102122002 GarnetA 0 3 -
+Barbaraanne 102122003 GarnetA 1 1 -
+Doe 102122004 GarnetA 1 2 -
+Godiva 102122005 GarnetA 2 3 -
+Kirsteni 110122004 Opal 2 1 -
+Louella 110122005 Opal 3 3 -
+Dione 110122007 Opal 4 2 -
+Carlita 110122008 Opal 4 3 -
+Anitra 110122009 Opal 5 3 -
+Laurena 114122004 Agate 5 2 -
+Rikki 114122005 Agate 6 1 -
+Aveline 114122006 Agate 6 3 -
+Shayna 114122007 Agate 7 1 -
+Lucienne 114122008 Agate 7 1 -
