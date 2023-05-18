@@ -25,7 +25,7 @@ if [ $# -eq 0 ]; then
     read -p "Enter mess preference: " messpref
     echo "$name $rollnumber $hostel $room $mess $messpref" >> temp.txt
    done
-    
+
     file=$temp.txt
 else
     file=$1
@@ -63,7 +63,7 @@ tail -n +2 $file | while read line; do
    fi
    curr_year=$(date +%y)
    admit_year=$(echo $rollnumber | cut -c5-6)
-   Year=$((admit_year-curr_year+2)) 
+   Year=$((admit_year-curr_year+2))
    if id "$hostel" >/dev/null 2>&1; then
       echo "Hostel $hostel already registered"
    else
@@ -79,7 +79,7 @@ tail -n +2 $file | while read line; do
    if [ ! -d "/home/HAD/$hostel/$room" ]; then
       mkdir /home/HAD/$hostel/$room
       chown $hostel:$hostel /home/HAD/$hostel/$room
-   fi 
+   fi
    if id "$name" >/dev/null 2>&1; then
       echo "Student $name already registered"
    else
@@ -94,10 +94,7 @@ tail -n +2 $file | while read line; do
          echo -e "Name: $name\nRoll Number: $rollnumber\nDepartment: $Department\nYear: $Year\nHostel: $hostel\nMonth: $(date '+%B')\nAllocated Mess: $mess\nMess Preferences: $messpref " > /home/HAD/$hostel/$room/$name/userDetails.txt
          chown $name:$name /home/HAD/$hostel/$room/$name/userDetails.txt
          echo -e "TuitionFee 0\nHostelRent 0\nServiceCharge 0\nMessFee 0 " > /home/HAD/$hostel/$room/$name/fees.txt
-         chown $name:$name /home/HAD/$hostel/$room/$name/fees.txt 
+         chown $name:$name /home/HAD/$hostel/$room/$name/fees.txt
       fi
-   fi 
+   fi
 done
-
-
-
