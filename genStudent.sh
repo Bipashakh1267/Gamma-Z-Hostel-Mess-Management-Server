@@ -15,6 +15,13 @@ else
     groupadd students
 fi
 
+getent group wardens >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+    echo -n
+else
+    groupadd wardens
+fi
+
 if [ $# -eq 0 ]; then
    while true; do
     read -p "Enter name: " name
@@ -68,6 +75,7 @@ tail -n +2 $file | while read line; do
       echo "Hostel $hostel already registered"
    else
       useradd -m -d /home/HAD/$hostel $hostel
+      usermod -aG wardens $hostel
       echo "password@123" | passwd --stdin $hostel
       touch /home/HAD/$hostel/announcements.txt
       chown $hostel:$hostel /home/HAD/$hostel/announcements.txt
