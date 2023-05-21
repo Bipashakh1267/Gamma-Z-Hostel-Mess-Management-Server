@@ -3,5 +3,6 @@ Steps to setup this project -->
 1. echo "alias genStudent='bash /home/genStudent.sh'" >> /root/.bashrc
 2. source /root/.bashrc
 3. genStudent studentDetails.txt
-4. bash setup.sh
-5. permit
+4. echo "alias permit='bash /home/permit.sh'" >> /root/.bashrc
+5. source /root/.bashrc
+
