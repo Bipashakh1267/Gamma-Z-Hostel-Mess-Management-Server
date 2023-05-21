@@ -81,6 +81,8 @@ tail -n +2 $file | while read line; do
       chown $hostel:$hostel /home/HAD/$hostel/announcements.txt
       touch /home/HAD/$hostel/feeDefaulters.txt
       chown $hostel:$hostel /home/HAD/$hostel/feeDefaulters.txt
+      echo "alias updateDefaulter='bash /home/updateDefaulter.sh'" >> /home/HAD/$hostel/.bashrc
+      source /home/HAD/$hostel/.bashrc
    fi
    room=$(printf "%03d" $room)
    room=$room
@@ -103,6 +105,20 @@ tail -n +2 $file | while read line; do
          chown $name:$name /home/HAD/$hostel/$room/$name/userDetails.txt
          echo -e "TuitionFee 0\nHostelRent 0\nServiceCharge 0\nMessFee 0 " > /home/HAD/$hostel/$room/$name/fees.txt
          chown $name:$name /home/HAD/$hostel/$room/$name/fees.txt
+         echo "alias messAllocation='bash /home/student_messAllocation.sh'" >> /home/HAD/$hostel/$room/$name/.bashrc
+         echo "alias feeBreakup='bash /home/feeBreakup.sh'" >> /home/HAD/$hostel/$room/$name/.bashrc
+         source /home/HAD/$hostel/$room/$name/.bashrc
       fi
    fi
 done
+
+chgrp wardens /home/updateDefaulter.sh
+chgrp students /home/student_messAllocation.sh
+chgrp HAD /home/office_messAllocation.sh
+chgrp students /home/feeBreakup.sh
+chmod g+x /home/updateDefaulter.sh
+chmod g+x /home/student_messAllocation.sh
+chmod g+x /home/office_messAllocation.sh
+chmod g+x /home/feeBreakup.sh
+echo "alias messAllocation='bash /home/office_messAllocation.sh'" >> /home/HAD/.bashrc
+source /home/HAD/.bashrc
