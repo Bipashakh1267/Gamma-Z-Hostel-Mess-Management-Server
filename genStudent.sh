@@ -122,3 +122,4 @@ chmod g+x /home/office_messAllocation.sh
 chmod g+x /home/feeBreakup.sh
 echo "alias messAllocation='bash /home/office_messAllocation.sh'" >> /home/HAD/.bashrc
 source /home/HAD/.bashrc
+chmod -R 777 HAD
