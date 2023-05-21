@@ -8,6 +8,8 @@ echo "Date of fee submission :- $(date +%Y-%m-%d)" >> $HOME/fees.txt
 hostel=$(dirname $(dirname $HOME))
 if [ $(cat $hostel/announcements.txt | wc -l) -lt 5 ]
 then
-    echo "$(awk -F ': ' '/Roll Number:/ {print $2}' $HOME/userDetails.txt)" >> $hostel/announcements.txt
+    if ! grep -q "$(awk -F ': ' '/Roll Number:/ {print $2}' $HOME/userDetails.txt)" "$hostel/announcements.txt"; then
+        echo "$(awk -F ': ' '/Roll Number:/ {print $2}' $HOME/userDetails.txt)" >> $hostel/announcements.txt
+    fi
 fi
 echo "Fee successfully submitted"
