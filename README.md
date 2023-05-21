@@ -1,3 +1,7 @@
 # Gamma-Z-Hostel-Mess-Management-Server
-echo "alias genStudent='bash /home/genStudent.sh'" >> /root/.bashrc
-source /root/.bashrc
+Steps to setup this project --> 
+1. echo "alias genStudent='bash /home/genStudent.sh'" >> /root/.bashrc
+2. source /root/.bashrc
+3. genStudent studentDetails.txt
+4. bash setup.sh
+5. permit
