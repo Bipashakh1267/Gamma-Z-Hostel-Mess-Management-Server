@@ -1,9 +1,8 @@
 #!/bin/bash
-messpref=$(grep "Mess Preference:" $HOME/userDetails.txt | awk '{print $NF}')
 rollnumber=$(grep "Roll Number:" $HOME/userDetails.txt | awk '{print $NF}')
-if [ "$messpref" = "-" ]; then
-    read "Enter your mess Preference :- " messpref
-    awk -v messpref="$messpref" '/Mess Preference:/ {if ($3 == "-") {gsub(/[-]/, messpref, $3)} } 1' $HOME/userDetails.txt > temp.txt && mv temp.txt $HOME/userDetails.txt
+if [[ $(sed -n '8p' $HOME/userDetails.txt) == *-* ]]; then
+    read -p "Enter your mess Preference :- " messpref
+    awk -v val="$messpref" '{ if ($1 == "Mess") $3 = val; print }' "$HOME/userDetails.txt" > "$HOME/temp.txt" && mv "$HOME/temp.txt" "$HOME/userDetails.txt" 
     echo $rollnumber >> /home/HAD/mess.txt
 else
     echo $rollnumber >> /home/HAD/mess.txt
