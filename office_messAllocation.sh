@@ -4,13 +4,12 @@ for hostel in /home/HAD/*; do
     for room in "$hostel"/*; do
       if [ -d "$room" ]; then
         for student in "$room"/*; do
-          if [ -d "$student" ]; then
+         if [ -d "$student" ]; then
+          if [[ $(sed -n '8p' $student/userDetails.txt) != *-* ]]; then
             messpref=$(grep "Mess Preference:" "$student/userDetails.txt" | awk '{print $NF}')
-            mess=$(grep "Allocated Mess:" "$student/userDetails.txt" | awk '{print $NF}')
-            if [ "$messpref" != "-" ]; then
-              awk -v messpref="$messpref" '/Allocated Mess:/ {if ($3 == "-") {gsub(/[-]/, messpref, $3)} } 1' "$student/userDetails.txt" > temp.txt && mv temp.txt "$student/userDetails.txt"
-            fi
+            awk -v val="$messpref" '{ if ($1 == "Allocated") $3 = val; print }' "$student/userDetails.txt" > "$student/temp.txt" && mv "$student/temp.txt" "$student/userDetails.txt"  
           fi
+         fi
         done
       fi
     done
