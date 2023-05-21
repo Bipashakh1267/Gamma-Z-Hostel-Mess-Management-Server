@@ -33,7 +33,7 @@ if [ $# -eq 0 ]; then
     echo "$name $rollnumber $hostel $room $mess $messpref" >> temp.txt
    done
 
-    file=$temp.txt
+    file=temp.txt
 else
     file=$1
     if [ ! -f "$file" ]; then
