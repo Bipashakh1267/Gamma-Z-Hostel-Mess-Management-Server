@@ -3,9 +3,9 @@ apt-get install -qq -y acl >/dev/null 2>&1
 setfacl -m g:students:rw /home/HAD/mess.txt
 for hostel in /home/HAD/*;do
   if [ -d "$hostel" ]; then
-      chmod -R g+rwx /home/HAD/$(basename $hostel)
-      chgrp -R HAD $(basename $hostel)
-      chmod -R o-rw /home/HAD/$(basename $hostel)
+      chmod -R g+rwx $hostel
+      chgrp -R HAD $hostel
+      chmod -R o-rw $hostel
   for room in $hostel/*; do
       if [ -d "$room" ]; then
        chmod -R g+rwx $room
@@ -16,5 +16,3 @@ for hostel in /home/HAD/*;do
      done
   fi
 done
-
-
