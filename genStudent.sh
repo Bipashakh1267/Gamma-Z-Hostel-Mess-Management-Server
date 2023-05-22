@@ -29,7 +29,7 @@ tail -n +2 $file | while read line; do
    room=$(echo $line | awk '{print $4}')
    mess=$(echo $line | awk '{print $5}')
    messpref=$(echo $line | awk '{print $6}')
-   dep_num=$(echo $rollnumber | cut -c1-3)
+   dep_num=$(echo $rollnumber | cut -c2-4)
    if [ $dep_num == '021' ]; then
       Department="Chem"
    elif [ $dep_num == '061' ]; then
