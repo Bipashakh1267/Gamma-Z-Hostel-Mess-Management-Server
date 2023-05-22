@@ -9,7 +9,7 @@ userdel HAD
 rm -rf /home/HAD 
 tail -n +2 /home/studentDetails.txt | while read line; do
    hostel=$(echo $line | awk '{print $3}')
-   groupdel $name
+   groupdel $hostel
 done
 
 tail -n +2 /home/studentDetails.txt | while read line; do
