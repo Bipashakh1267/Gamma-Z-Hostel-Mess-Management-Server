@@ -1,16 +1,16 @@
 #!/bin/bash
 tail -n +2 /home/studentDetails.txt | while read line; do
    name=$(echo $line | awk '{print $1}')
-   userdel -f $name
+   userdel -rf $name
    groupdel -f $name
 done
 
 groupdel students
-userdel -f HAD
+userdel -rf HAD
 rm -rf /home/HAD 
 tail -n +2 /home/studentDetails.txt | while read line; do
    hostel=$(echo $line | awk '{print $3}')
-   userdel -f $hostel
+   userdel -rf $hostel
    groupdel -f $hostel
 done
 
@@ -18,4 +18,4 @@ tail -n +2 /home/studentDetails.txt | while read line; do
    hostel=$(echo $line | awk '{print $3}')
    groupdel -f studentsOf$hostel
 done
-userdel -f HAD
+userdel -rf HAD
