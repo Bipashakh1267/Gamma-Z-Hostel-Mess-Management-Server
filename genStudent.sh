@@ -1,6 +1,5 @@
 #!/bin/bash
 useradd -m -d /home/HAD HAD
-echo "password@123" | passwd --stdin HAD
 echo -e "Mess capacity\n1 35\n2 35\n3 35\nStudent Preferences" > /home/HAD/mess.txt
 chown HAD:HAD /home/HAD/mess.txt
 groupadd students
