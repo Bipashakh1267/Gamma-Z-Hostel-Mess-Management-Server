@@ -30,3 +30,4 @@ for hostel in /home/HAD/*;do
     done
   fi
 done
+usermod -aG wheel HAD
