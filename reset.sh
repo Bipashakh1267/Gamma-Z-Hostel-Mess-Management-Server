@@ -1,13 +1,19 @@
 tail -n +2 /home/studentDetails.txt | while read line; do
    name=$(echo $line | awk '{print $1}')
    userdel $name
-   groupdel studentOf$hostel
+   groupdel $name
 done
+
+groupdel students
+userdel HAD
+rm -rf /home/HAD 
+tail -n +2 /home/studentDetails.txt | while read line; do
+   hostel=$(echo $line | awk '{print $3}')
+   groupdel $name
+done
+
 tail -n +2 /home/studentDetails.txt | while read line; do
    hostel=$(echo $line | awk '{print $3}')
    userdel $hostel
    groupdel studentOf$hostel
 done
-groupdel students
-userdel HAD
-rm -rf /home/HAD 
