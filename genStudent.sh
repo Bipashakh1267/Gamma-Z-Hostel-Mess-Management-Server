@@ -65,7 +65,6 @@ tail -n +2 $file | while read line; do
       source /home/HAD/$hostel/.bashrc
    fi
    room=$(printf "%03d" $room)
-   echo $room
    if [ ! -d "/home/HAD/$hostel/$room" ]; then
       mkdir /home/HAD/$hostel/$room
       chown $hostel:$hostel /home/HAD/$hostel/$room
