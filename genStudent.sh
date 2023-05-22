@@ -68,9 +68,7 @@ tail -n +2 $file | while read line; do
    room=$(printf "%03d" $room)
    echo $room
    if [ ! -d "/home/HAD/$hostel/$room" ]; then
-      echo making $room
       mkdir /home/HAD/$hostel/$room
-      echo made $room
       chown $hostel:$hostel /home/HAD/$hostel/$room
    fi
    if id "$name" >/dev/null 2>&1; then
