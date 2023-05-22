@@ -1,7 +1,7 @@
 #!/bin/bash
-mess1=35
-mess2=35
-mess3=35
+mess1=$(awk 'FNR == 2 {print $2}' /home/HAD/mess.txt)
+mess2=$(awk 'FNR == 3 {print $2}' /home/HAD/mess.txt)
+mess3=$(awk 'FNR == 4 {print $2}' /home/HAD/mess.txt)
 tail -n +6 /home/HAD/mess.txt | while read line; do
    roll_mess=$(echo $line | awk '{print $1}')
    echo roll_mess $roll_mess
