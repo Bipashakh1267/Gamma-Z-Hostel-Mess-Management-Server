@@ -6,3 +6,4 @@ Steps to setup the project -->
 4. echo "alias permit='bash /home/permit.sh'" >> /root/.bashrc
 5. source /root/.bashrc
 
+# To reset execute --> bash reset.sh
