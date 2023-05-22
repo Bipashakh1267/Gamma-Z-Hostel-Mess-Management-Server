@@ -1,27 +1,9 @@
 #!/bin/bash
-if id HAD >/dev/null 2>&1; then
-  echo -n
-else
-  useradd -m -d /home/HAD HAD
-  echo "password@123" | passwd --stdin HAD
-  echo -e "Mess capacity\n1 35\n2 35\n3 35\nStudent Preferences" > /home/HAD/mess.txt
-  chown HAD:HAD /home/HAD/mess.txt
-fi
-
-getent group students >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo -n
-else
-    groupadd students
-fi
-
-getent group wardens >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo -n
-else
-    groupadd wardens
-fi
-
+useradd -m -d /home/HAD HAD
+echo "password@123" | passwd --stdin HAD
+echo -e "Mess capacity\n1 35\n2 35\n3 35\nStudent Preferences" > /home/HAD/mess.txt
+chown HAD:HAD /home/HAD/mess.txt
+groupadd students
 if [ $# -eq 0 ]; then
    while true; do
     read -p "Enter name: " name
@@ -75,7 +57,6 @@ tail -n +2 $file | while read line; do
       echo "Hostel $hostel already registered"
    else
       useradd -m -d /home/HAD/$hostel $hostel
-      usermod -aG wardens $hostel
       echo "password@123" | passwd --stdin $hostel
       touch /home/HAD/$hostel/announcements.txt
       chown $hostel:$hostel /home/HAD/$hostel/announcements.txt
@@ -115,14 +96,12 @@ tail -n +2 $file | while read line; do
    fi
 done
 
-chgrp wardens /home/updateDefaulter.sh
 chgrp students /home/student_messAllocation.sh
 chgrp HAD /home/office_messAllocation.sh
 chgrp students /home/feeBreakup.sh
-chmod g+x /home/updateDefaulter.sh
 chmod g+x /home/student_messAllocation.sh
 chmod g+x /home/office_messAllocation.sh
 chmod g+x /home/feeBreakup.sh
+chmod o+x /home/updateDefaulter.sh
 echo "alias messAllocation='bash /home/office_messAllocation.sh'" >> /home/HAD/.bashrc
 source /home/HAD/.bashrc
-chmod -R 777 HAD
