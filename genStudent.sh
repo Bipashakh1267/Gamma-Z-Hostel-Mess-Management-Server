@@ -108,6 +108,9 @@ tail -n +2 $file | while read line; do
          echo "alias messAllocation='bash /home/student_messAllocation.sh'" >> /home/HAD/$hostel/$room/$name/.bashrc
          echo "alias feeBreakup='bash /home/feeBreakup.sh'" >> /home/HAD/$hostel/$room/$name/.bashrc
          source /home/HAD/$hostel/$room/$name/.bashrc
+         if [[ $(sed -n '8p' /home/HAD/$hostel/$room/$name/userDetails.txt) != *-* ]]; then
+             echo $rollnumber >> /home/HAD/mess.txt
+         fi
       fi
    fi
 done
