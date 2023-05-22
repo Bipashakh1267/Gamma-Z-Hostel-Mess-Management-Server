@@ -66,9 +66,11 @@ tail -n +2 $file | while read line; do
       source /home/HAD/$hostel/.bashrc
    fi
    room=$(printf "%03d" $room)
-   room=$room
+   echo $room
    if [ ! -d "/home/HAD/$hostel/$room" ]; then
+      echo making $room
       mkdir /home/HAD/$hostel/$room
+      echo made $room
       chown $hostel:$hostel /home/HAD/$hostel/$room
    fi
    if id "$name" >/dev/null 2>&1; then
