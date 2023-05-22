@@ -74,8 +74,8 @@ tail -n +2 $file | while read line; do
    if id "$name" >/dev/null 2>&1; then
       echo "Student $name already registered"
    else
-      count=$(find /home/HAD/ -name $room  | wc -l)
-      if [ "$count" -gt 2 ]; then
+      count=$(ls -l /home/HAD/$hostel/$room | wc -l)
+      if [ "$count" -gt 3 ]; then
          echo "Error: the room $room already has more than 2 students."
       else
          useradd -m -d /home/HAD/$hostel/$room/$name $name
