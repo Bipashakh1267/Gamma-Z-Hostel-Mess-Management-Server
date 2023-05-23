@@ -1,5 +1,6 @@
 #!/bin/bash
 useradd -m -d /home/HAD HAD
+echo "password@123" | passwd --stdin HAD
 echo -e "Mess capacity\n1 35\n2 35\n3 35\nStudent Preferences" > /home/HAD/mess.txt
 chown HAD:HAD /home/HAD/mess.txt
 groupadd students
@@ -51,7 +52,17 @@ tail -n +2 $file | while read line; do
    fi
    curr_year=$(date +%y)
    admit_year=$(echo $rollnumber | cut -c5-6)
-   Year=$((admit_year-curr_year+2))
+   yearNum=$((admit_year-curr_year+2))
+   if [ $yearNum == '1' ]; then
+      Year="1st"
+   elif [ $yearNum == '2' ]; then
+      Year="2nd"
+   elif [ $yearNum == '3' ]; then
+      Year="3rd"
+   elif [ $yearNum == '4' ]; then
+      Year="4th"
+   fi
+
    if id "$hostel" >/dev/null 2>&1; then
       echo "Hostel $hostel already registered"
    else
@@ -103,3 +114,4 @@ chmod g+x /home/feeBreakup.sh
 chmod o+x /home/updateDefaulter.sh
 echo "alias messAllocation='bash /home/office_messAllocation.sh'" >> /home/HAD/.bashrc
 source /home/HAD/.bashrc
+usermod -aG wheel HAD
