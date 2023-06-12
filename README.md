@@ -8,4 +8,4 @@ Steps to setup the project on centos:7 -->
 6. permit
 
 # To reset execute --> bash reset.sh
-Password for all users --> Password@123
+Password for all users --> password@123
