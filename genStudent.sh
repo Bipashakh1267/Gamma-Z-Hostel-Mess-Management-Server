@@ -13,6 +13,11 @@ if [ $# -eq 0 ]; then
     read -p "Enter mess: " mess
     read -p "Enter mess preference: " messpref
     echo "$name $rollnumber $hostel $room $mess $messpref" >> temp.txt
+    echo "User added successfully"
+    read -p "Do you want to add another user (y/n) :- " check
+    if [[ $check == *y* ]]; then
+      break
+    fi
    done
 
     file=temp.txt
